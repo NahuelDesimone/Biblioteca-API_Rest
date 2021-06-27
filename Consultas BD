@@ -1,0 +1,12 @@
+insert into autor (apellido, nacionalidad, nombre)
+values ('Faulkner','Estados Unidos','William'),
+('Wilde','Irlanda','Oscar'),
+('Shakespeare','Inglaterra','William'),
+('Kafka','Republica Checa','Fran'),
+('Garcia Marquez','Colombia','Gabriel'),
+('Neruda','Chile','Pablo'),
+('Borges','Argentina','Jorge Luis');
+
+
+
+

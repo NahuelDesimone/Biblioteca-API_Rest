@@ -47,6 +47,10 @@ public class LibroServiceImpl implements LibroService{
         Long num = libroUpdated.getIdLibro();
         if(libroRepository.findById(num).isPresent()){
             Libro libroToUpdate = new Libro();
+            //libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
+            //libroToUpdate.setIdAutor(libroUpdated.getIdAutor());
+            //libroToUpdate.setIdEditorial(libroUpdated.getIdEditorial());
+            //libroToUpdate.setIdGenero(libroToUpdate.getIdGenero());
             libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
             libroToUpdate.setAutor(libroUpdated.getAutor());
             libroToUpdate.setEditorial(libroUpdated.getEditorial());
@@ -57,5 +61,4 @@ public class LibroServiceImpl implements LibroService{
             return "Error al modificar el libro";
         }
     }
-   
 }
