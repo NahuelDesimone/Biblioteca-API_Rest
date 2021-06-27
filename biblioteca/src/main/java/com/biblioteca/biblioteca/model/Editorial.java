@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @Table(name = "EDITORIAL")
@@ -14,7 +16,7 @@ public class Editorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "ID_EDITORIAL")
+    @Column(name = "id_editorial")
     Long idEditorial;
 
     @Column(name = "NOMBRE")
@@ -22,5 +24,39 @@ public class Editorial {
 
     @Column(name = "PAIS")
     String pais;
-    
+
+    @OneToMany(mappedBy = "editorial")
+    List<Libro> listaLibros;
+
+    public Long getIdEditorial() {
+        return idEditorial;
+    }
+
+    public void setIdEditorial(Long idEditorial) {
+        this.idEditorial = idEditorial;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public List<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
+    public void setListaLibros(List<Libro> listaLibros) {
+        this.listaLibros = listaLibros;
+    }
 }
