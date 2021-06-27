@@ -9,4 +9,21 @@ values ('Faulkner','Estados Unidos','William'),
 
 
 
+insert into editorial (nombre, pais)
+values ('Acantilado', 'España'),
+('Aguilar', 'España'),
+('Caja Negra', 'Argentina'),
+('Almadía', 'México'),
+('Crítica', 'España');
+
+insert into genero (nombre)
+values ('Policial'),
+('Juvenil'),
+('Novela'),
+('Romántico'),
+('Suspenso'),
+('Ciencia Ficción'),
+('Psicología');
+
+
 
