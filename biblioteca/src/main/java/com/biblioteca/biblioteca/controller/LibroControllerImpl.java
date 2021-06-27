@@ -53,12 +53,11 @@ public class LibroControllerImpl implements LibroController {
 		return libroService.updateLibro(libroNew);
 	}
 
-    // http://localhost:8080/test (GET)
-	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+    // http://localhost:8080/testLibros (GET)
+	@RequestMapping(value = "/testLibros", method = RequestMethod.GET, produces = "application/json")
 	@Override
 	public String test() {
-		return "Test done";
+		return "Test libro done";
 	}
-    
 
 }
