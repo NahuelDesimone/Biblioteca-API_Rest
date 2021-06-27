@@ -30,6 +30,10 @@ public class Libro {
     @JoinColumn(name = "editorial")
     Editorial editorial;
 
+    @ManyToOne
+    @JoinColumn(name = "socio")
+    Socio socio;
+
     public Long getIdLibro() {
         return idLibro;
     }

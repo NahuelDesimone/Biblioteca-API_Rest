@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 
 @Entity
@@ -27,12 +29,23 @@ public class Socio {
     @Column(name = "EMAIL")
     String email;
 
+    @OneToMany(mappedBy = "socio")
+    List<Libro> listaLibros;
+
     public Long getIdSocio() {
         return idSocio;
     }
 
     public void setIdSocio(Long idSocio) {
         this.idSocio = idSocio;
+    }
+
+    public List<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
+    public void setListaLibros(List<Libro> listaLibros) {
+        this.listaLibros = listaLibros;
     }
 
     public String getNombre() {
