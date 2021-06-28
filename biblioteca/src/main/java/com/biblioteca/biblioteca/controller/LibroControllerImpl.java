@@ -1,7 +1,13 @@
 package com.biblioteca.biblioteca.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.biblioteca.biblioteca.model.Libro;
@@ -9,55 +15,45 @@ import com.biblioteca.biblioteca.service.LibroService;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-
-
 @RestController
+@RequestMapping("/biblioteca/libros/")
 public class LibroControllerImpl implements LibroController {
 
     @Autowired
     LibroService libroService;
 
-    // http://localhost:8080/libros (GET)
-    @RequestMapping(value="/libros", method=RequestMethod.GET,produces = "application/json")
-    @Override
-    public List<Libro> getLibros(){
+    // CREATE
+    @PostMapping(value = "/createLibro")
+    public ResponseEntity<Libro> createLibro(@RequestBody Libro libroNew) {
+        Libro libro = libroService.saveLibro(libroNew);
+        return new ResponseEntity<Libro>(libro, HttpStatus.OK);
+    }
+
+    // READ ALL
+    @GetMapping(value = "/readAllLibros")
+    public List<Libro> getAllLibros() {
         return libroService.findAllLibros();
     }
 
-    // http://localhost:8080/libros/1 (GET)
-    @RequestMapping(value="/libros/{id}", method=RequestMethod.GET,produces = "application/json")
-    @Override
-    public Optional<Libro> getLibroById(@PathVariable Long id){
+    // READ LIBRO BY ID
+    @GetMapping(value = "/readLibro/{id}")
+    public Optional<Libro> getLibroById(@PathVariable Long id) {
         return libroService.findLibroByID(id);
     }
-    
-    // http://localhost:8080/libros/add (ADD)
-    @Override
-    @RequestMapping(value="/libros/add", method=RequestMethod.POST,produces = "application/json")
-    public Libro addLibro(Libro libro){
-        return libroService.saveLibro(libro);
+
+    // UPDATE
+    @PatchMapping(value = "/updateLibro")
+    public String updateLibro(@RequestBody Libro libroNew) {
+        return libroService.updateLibro(libroNew);
     }
 
-    // http://localhost:8080/libros/delete/1 (GET)
-	@Override
-	@RequestMapping(value = "/libros/delete/{id}", method = RequestMethod.GET, produces = "application/json")
-	public String deleteLibro(@PathVariable Long id) {
-		return libroService.deleteLibro(id);
-	}
-
-    // http://localhost:8080/libros/update (PATCH)
-	@Override
-	@RequestMapping(value = "/libros/update", method = RequestMethod.PATCH, produces = "application/json")
-	public String updateLibro(Libro libroNew) {
-		return libroService.updateLibro(libroNew);
-	}
-
-    // http://localhost:8080/testLibros (GET)
-	@RequestMapping(value = "/testLibros", method = RequestMethod.GET, produces = "application/json")
-	@Override
-	public String test() {
-		return "Test libro done";
-	}
-
+    // DELETE
+    @GetMapping(value = "/deleteLibro/{id}")
+    public String deleteLibro(@PathVariable Long id) {
+        if (libroService.findLibroByID(id).isPresent()) {
+            return libroService.deleteLibro(id);
+        } else {
+            return "Error! El libro ingresado no existe, no se puede eliminar";
+        }
+    }
 }

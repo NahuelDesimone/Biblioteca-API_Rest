@@ -10,53 +10,50 @@ import com.biblioteca.biblioteca.service.SocioService;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 @RestController
-public class SocioControllerImpl implements SocioController{
+@RequestMapping("/biblioteca/socios/")
+public class SocioControllerImpl implements SocioController {
     @Autowired
     SocioService socioService;
 
-    // http://localhost:8080/socios (GET)
-    @RequestMapping(value="/socios", method=RequestMethod.GET,produces = "application/json")
-    @Override
-    public List<Socio> getSocios(){
+    // CREATE
+    @PostMapping(value = "/createSocio")
+    public ResponseEntity<Socio> createSocio(@RequestBody Socio socioNew) {
+        Socio socio = socioService.saveSocio(socioNew);
+        return new ResponseEntity<Socio>(socio, HttpStatus.OK);
+    }
+
+    // READ ALL
+    @GetMapping(value = "/readAllSocios")
+    public List<Socio> getAllSocios() {
         return socioService.findAllSocios();
     }
 
-    // http://localhost:8080/socios/1 (GET)
-    @RequestMapping(value="/socios/{id}", method=RequestMethod.GET,produces = "application/json")
-    @Override
-    public Optional<Socio> getSocioById(@PathVariable Long id){
+    // READ SOCIO BY ID
+    @GetMapping(value = "/readSocio/{id}")
+    public Optional<Socio> getSocioById(@PathVariable Long id) {
         return socioService.findSocioByID(id);
     }
-    
-    // http://localhost:8080/socios/add (ADD)
-    @Override
-    @RequestMapping(value="/socios/add", method=RequestMethod.POST,produces = "application/json")
-    public Socio addSocio(Socio socio){
-        return socioService.saveSocio(socio);
+
+    // UPDATE
+    @PatchMapping(value = "/updateSocio")
+    public String updateSocio(@RequestBody Socio socioNew) {
+        return socioService.updateSocio(socioNew);
     }
 
-    // http://localhost:8080/socios/delete/1 (GET)
-	@Override
-	@RequestMapping(value = "/socios/delete/{id}", method = RequestMethod.GET, produces = "application/json")
-	public String deleteSocio(@PathVariable Long id) {
-		return socioService.deleteSocio(id);
-	}
-
-    // http://localhost:8080/socios/update (PATCH)
-	@Override
-	@RequestMapping(value = "/socios/update", method = RequestMethod.PATCH, produces = "application/json")
-	public String updateSocio(Socio socioNew) {
-		return socioService.updateSocio(socioNew);
-	}
-
-    // http://localhost:8080/testSocios (GET)
-	@RequestMapping(value = "/testSocios", method = RequestMethod.GET, produces = "application/json")
-	@Override
-	public String test() {
-		return "Test socios done";
-	}
-    
-
+    // DELETE
+    @GetMapping(value = "/deleteSocio/{id}")
+    public String deleteSocio(@PathVariable Long id) {
+        if (socioService.findSocioByID(id).isPresent()) {
+            return socioService.deleteSocio(id);
+        } else {
+            return "Error! El libro ingresado no existe, no se puede eliminar";
+        }
+    }
 }

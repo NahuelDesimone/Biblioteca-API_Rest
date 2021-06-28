@@ -26,7 +26,7 @@ public class Editorial {
     String pais;
 
     @OneToMany(mappedBy = "editorial")
-    List<Libro> listaLibros;
+    List<Libro> listaLibros = null;
 
     public Long getIdEditorial() {
         return idEditorial;
@@ -50,13 +50,5 @@ public class Editorial {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-
-    public List<Libro> getListaLibros() {
-        return listaLibros;
-    }
-
-    public void setListaLibros(List<Libro> listaLibros) {
-        this.listaLibros = listaLibros;
     }
 }

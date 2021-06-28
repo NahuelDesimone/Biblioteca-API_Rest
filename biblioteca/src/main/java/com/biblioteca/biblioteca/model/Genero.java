@@ -40,13 +40,5 @@ public class Genero {
         this.nombre = nombre;
     }
 
-    public List<Libro> getListaLibros() {
-        return listaLibros;
-    }
-
-    public void setListaLibros(List<Libro> listaLibros) {
-        this.listaLibros = listaLibros;
-    }
-
     
 }

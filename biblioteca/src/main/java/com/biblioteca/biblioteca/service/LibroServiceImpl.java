@@ -24,7 +24,7 @@ public class LibroServiceImpl implements LibroService{
         Optional<Libro> libro = libroRepository.findById(id);
         return libro;
     }
-
+    
     @Override
     public Libro saveLibro(Libro libroNew) {
         if (libroNew != null){
@@ -41,37 +41,12 @@ public class LibroServiceImpl implements LibroService{
         }
         return "Error! El libro no existe";
     }
-    /*
-    @Override
-    public String updateLibro(Libro libroUpdated){
-        Long num = libroUpdated.getIdLibro();
-        if(libroRepository.findById(num).isPresent()){
-            Libro libroToUpdate = new Libro();
-            //libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
-            //libroToUpdate.setIdAutor(libroUpdated.getIdAutor());
-            //libroToUpdate.setIdEditorial(libroUpdated.getIdEditorial());
-            //libroToUpdate.setIdGenero(libroToUpdate.getIdGenero());
-            libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
-            libroToUpdate.setAutor(libroUpdated.getAutor());
-            libroToUpdate.setEditorial(libroUpdated.getEditorial());
-            libroToUpdate.setGenero(libroToUpdate.getGenero());
-            return "Libro modificado";
-        }
-        else{
-            return "Error al modificar el libro";
-        }
-    }
-    */
 
     @Override
     public String updateLibro(Libro libroUpdated){
         Long num = libroUpdated.getIdLibro();
         if(libroRepository.findById(num).isPresent()){
             Libro libroToUpdate = new Libro();
-            //libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
-            //libroToUpdate.setIdAutor(libroUpdated.getIdAutor());
-            //libroToUpdate.setIdEditorial(libroUpdated.getIdEditorial());
-            //libroToUpdate.setIdGenero(libroToUpdate.getIdGenero());
             libroToUpdate.setIdLibro(libroUpdated.getIdLibro());
             libroToUpdate.setAutor(libroUpdated.getAutor());
             libroToUpdate.setEditorial(libroUpdated.getEditorial());

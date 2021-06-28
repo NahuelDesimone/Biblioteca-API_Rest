@@ -26,4 +26,17 @@ values ('Policial'),
 ('Psicología');
 
 
-
+{
+    "autor" : {
+        "apellido" : "Marquez",
+        "nacionalidad" : "Colombia",
+        "nombre" : "Gabriel García"
+    },
+    "editorial" : {
+        "nombre" : "Aguilar",
+        "pais" : "España"
+    },
+    "genero" : {
+        "nombre" : "Policial"
+    }
+}
