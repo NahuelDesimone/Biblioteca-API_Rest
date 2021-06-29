@@ -39,15 +39,6 @@ public class Socio {
     public void setIdSocio(Long idSocio) {
         this.idSocio = idSocio;
     }
-
-    public List<Libro> getListaLibros() {
-        return listaLibros;
-    }
-
-    public void setListaLibros(List<Libro> listaLibros) {
-        this.listaLibros = listaLibros;
-    }
-
     public String getNombre() {
         return nombre;
     }

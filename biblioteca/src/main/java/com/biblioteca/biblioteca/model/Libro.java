@@ -18,6 +18,9 @@ public class Libro {
     @Column(name = "id_libro")
     Long idLibro;
 
+    @Column(name = "nombre")
+    String nombre;
+
     @ManyToOne
     @JoinColumn(name = "autor")
     Autor autor;
@@ -33,6 +36,22 @@ public class Libro {
     @ManyToOne
     @JoinColumn(name = "socio")
     Socio socio;
+
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public Long getIdLibro() {
         return idLibro;
@@ -65,57 +84,4 @@ public class Libro {
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
-
-    
-
-    /*
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "ID")
-    Long idLibro;
-
-    @Column(name = "AUTOR")
-    String autor;
-
-    @Column(name = "GENERO")
-    String genero;
-
-    @Column(name = "EDITORIAL")
-    String editorial;
-
-    public Long getIdLibro(){
-        return idLibro;
-    }
-
-    public void setIdLibro(Long id){
-        this.idLibro = id;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getEditorial() {
-        return editorial;
-    }
-
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
-    }
-    */
-
 }

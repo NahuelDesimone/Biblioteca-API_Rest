@@ -25,18 +25,18 @@ values ('Policial'),
 ('Ciencia Ficción'),
 ('Psicología');
 
+insert into libro (nombre,autor, editorial,genero,socio)
+values ('El principito',3,2,2,1),
+('El Cid Campeador',1,2,3,4),
+('Harry Potter',2,4,2,1),
+('El señor de los anillos',4,3,2,1),
+('Atomic Habits,'1,4,3,2)
 
-{
-    "autor" : {
-        "apellido" : "Marquez",
-        "nacionalidad" : "Colombia",
-        "nombre" : "Gabriel García"
-    },
-    "editorial" : {
-        "nombre" : "Aguilar",
-        "pais" : "España"
-    },
-    "genero" : {
-        "nombre" : "Policial"
-    }
-}
+
+
+insert into socio (apellido, email, nombre)
+values ('Desimone','nahuel@desimone','Nahuel'),
+('Perez','juan@perez','Juan'),
+('Messi','leo@messi','Lionel'),
+('Ronaldo','cristiano@ronaldo','Cristiano'),
+('Rodriguez','pedro@rodriguez','Pedro')

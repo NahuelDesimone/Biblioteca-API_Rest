@@ -3,6 +3,7 @@ package com.biblioteca.biblioteca.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,7 @@ public class LibroControllerImpl implements LibroController {
     }
 
     // DELETE
-    @GetMapping(value = "/deleteLibro/{id}")
+    @DeleteMapping(value = "/deleteLibro/{id}")
     public String deleteLibro(@PathVariable Long id) {
         if (libroService.findLibroByID(id).isPresent()) {
             return libroService.deleteLibro(id);

@@ -39,6 +39,4 @@ public class Genero {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    
 }
