@@ -49,7 +49,7 @@ public class SocioServiceImpl implements SocioService {
             socioToUpdate.setIdSocio(socioUpdated.getIdSocio());
             socioToUpdate.setNombre(socioUpdated.getNombre());
             socioToUpdate.setApellido(socioUpdated.getApellido());
-            socioToUpdate.setEmail(socioToUpdate.getEmail());
+            socioToUpdate.setEmail(socioUpdated.getEmail());
             socioRepository.save(socioToUpdate);
             return "Socio modificado";
         }
