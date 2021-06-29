@@ -50,6 +50,7 @@ public class SocioServiceImpl implements SocioService {
             socioToUpdate.setNombre(socioUpdated.getNombre());
             socioToUpdate.setApellido(socioUpdated.getApellido());
             socioToUpdate.setEmail(socioToUpdate.getEmail());
+            socioRepository.save(socioToUpdate);
             return "Socio modificado";
         }
         else{

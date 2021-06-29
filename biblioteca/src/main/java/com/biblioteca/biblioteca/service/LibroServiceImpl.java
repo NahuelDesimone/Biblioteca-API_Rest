@@ -52,6 +52,7 @@ public class LibroServiceImpl implements LibroService{
             libroToUpdate.setAutor(libroUpdated.getAutor());
             libroToUpdate.setEditorial(libroUpdated.getEditorial());
             libroToUpdate.setGenero(libroToUpdate.getGenero());
+            libroRepository.save(libroToUpdate);
             return "Libro modificado";
         }
         else{

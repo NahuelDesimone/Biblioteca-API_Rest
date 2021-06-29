@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.List;
 
 @Entity
 @Table(name = "GENERO")
@@ -22,7 +21,6 @@ public class Genero {
     String nombre;
 
     @OneToMany(mappedBy = "editorial")
-    List<Libro> listaLibros;
 
     public Long getIdGenero() {
         return idGenero;

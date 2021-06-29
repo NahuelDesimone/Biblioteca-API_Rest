@@ -54,7 +54,7 @@ public class SocioControllerImpl implements SocioController {
         if (socioService.findSocioByID(id).isPresent()) {
             return socioService.deleteSocio(id);
         } else {
-            return "Error! El libro ingresado no existe, no se puede eliminar";
+            return "Error! El socio ingresado no existe, no se puede eliminar";
         }
     }
 }

@@ -2,7 +2,6 @@ package com.biblioteca.biblioteca.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +27,6 @@ public class Autor {
     String nacionalidad;
 
     @OneToMany(mappedBy = "autor")
-    List<Libro> listaLibros = null;
 
     public Long getId() {
         return id;
