@@ -9,10 +9,6 @@ public interface LibroService {
 
     public Optional<Libro> findLibroByID(Long id);
 
-    //public Libro getLibroById(Long id);
-
-    //public List<Libro> findLibroByID(Long id);
-
     public Libro saveLibro(Libro libroNew);
 
     public String deleteLibro(Long id);

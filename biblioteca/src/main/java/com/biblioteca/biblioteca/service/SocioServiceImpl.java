@@ -54,7 +54,7 @@ public class SocioServiceImpl implements SocioService {
             return "Socio modificado";
         }
         else{
-            return "Error al modificar el socio";
+            return "Error, el socio que se quiere modificar no existe";
         }
     }  
 }
